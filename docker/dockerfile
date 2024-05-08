@@ -1,0 +1,20 @@
+FROM golang:1.22.2 AS build-stage
+
+WORKDIR /app
+
+COPY ../go.mod ../go.sum ./
+
+#Download dependencies
+RUN go mod download
+
+#ToDo Copy files from all directories
+COPY *.go ./
+
+#Compile
+RUN CGO_ENABLED=0 GOOS=linux go build -o /doc
+
+#Expose port to serve API REST, ToDO should be variable
+EXPOSE 8080
+
+#Run binary file
+CMD [/doc]

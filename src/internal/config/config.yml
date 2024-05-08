@@ -1,0 +1,14 @@
+database:
+  username: "horse"
+  password: "pass"
+  host: "localhost"
+  port: "8888"
+  max_lifetime: 10000
+  max_open_conns: 200
+  max_idle_conns: 200
+
+server:
+  port: "3000"
+  secret: "jdnfksdmfksda"
+  #release | debug
+  mode: "release"
