@@ -1,0 +1,9 @@
+{
+    "actionid": "value",
+    "target": "value",
+    "actiondefinition": {
+      "actiontype": "value",
+      "service": "value",
+      "action": "value"
+    }
+  }
