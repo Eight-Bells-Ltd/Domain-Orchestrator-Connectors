@@ -7,10 +7,10 @@ import (
 	"doc/src/data"
 )
 
-var Config *data.Configuration
+var Config *data.AppConfiguration
 
 func SetupConfiguration() {
-	var configuration *data.Configuration
+	var appConfiguration *data.AppConfiguration
 
 	//ToDo SetUp configuration file hardcode
 	viper.SetConfigFile("src/config/config.yml")
@@ -20,15 +20,22 @@ func SetupConfiguration() {
 		log.Fatalf("Error reading config file, %s", err)
 	}
 
-	err := viper.Unmarshal(&configuration)
+	err := viper.Unmarshal(&appConfiguration)
 	if err != nil {
 		log.Fatalf("Unable to decode into struct, %v", err)
 	}
 
-	Config = configuration
+	Config = appConfiguration
+	log.Printf("App Configuration readed")
 }
 
 // GetConfig provides configuration data
-func GetConfig() *data.Configuration {
-	return Config
+func GetConfig() data.AppConfiguration {
+	return *Config
+}
+
+// GetURL provides URL configured in config.yml
+func GetURL() string {
+	log.Printf("ENTER: GetURL(), %s", Config.Orchestrator)
+	return Config.Orchestrator
 }

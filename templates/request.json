@@ -4,6 +4,9 @@
     "actiondefinition": {
       "actiontype": "value",
       "service": "value",
-      "action": "value"
+      "action": {
+        "rate": 5 ,
+        "zone": "0.0.0.0"
+      }
     }
   }

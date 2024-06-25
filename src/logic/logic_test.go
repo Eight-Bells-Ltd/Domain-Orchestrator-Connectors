@@ -53,7 +53,10 @@ func TestNorthBoundSuccess(t *testing.T) {
         ActionDefinition: data.Actiondefinition {
             ActionType: "value",
             Service: "value",
-            Action: "value",
+            Action: data.ActionRate {
+                Zone: "0.0.0.0",
+                Rate_value: 5,
+            },
         },
     }
     jsonbody, _ := json.Marshal(body)

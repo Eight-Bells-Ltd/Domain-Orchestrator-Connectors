@@ -14,7 +14,7 @@
           <isCNF>false</isCNF>
           <dnsRateParameters>
           <operation>RATE</operation>
-          <ip>172.22.2.2</ip>
+          <ip>0.0.0.0</ip>
           <rate>1</rate>
           </dnsRateParameters>
         </configurationCondition>
