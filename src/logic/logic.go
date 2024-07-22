@@ -57,7 +57,7 @@ func postAction(c *gin.Context) {
 		}
 	} else {
 		//Handler parse error
-		log.Println("Bad Request=%s", err)
+		log.Printf("Bad Request=%s \n", err)
 		response := data.Northbound_response{"BadRequest", "NotExecuted"}
 		c.IndentedJSON(http.StatusBadRequest, response)
 	}
@@ -69,23 +69,22 @@ func EnforceAction(request data.Northbound_request) bool {
 		//Read File as a template
 		templateXml, err := ioutil.ReadFile("templates/dns_rate.xml")
 		if err != nil {
-			log.Println("ReadFileError=%s", err)
+			log.Printf("ReadFileError=%s \n", err)
 			return false
 		}
 
-		fmt.Printf("TEMPLATE: %s\n", templateXml)
-
-
-		//var Xmltemplate data.Southbound_request
 		var Xmltemplate data.ITResourceOrchestration
 		err = xml.Unmarshal(templateXml, &Xmltemplate)
 		if err != nil {
-			log.Println("UnmarshalError=%s", err)
+			log.Printf("UnmarshalError=%s \n", err)
 			return false
 		}
 
 		Xmltemplate.ITResource.Configuration.ConfigurationRule.ConfigurationCondition.DnsRateParameters.Rate = request.ActionDefinition.Action.Rate_value
 		Xmltemplate.ITResource.Configuration.ConfigurationRule.ConfigurationCondition.DnsRateParameters.IP =  "0.0.0.0"
+		//ITResource Attributes
+		Xmltemplate.XsiXmlns = "http://www.w3.org/2001/XMLSchema-instance"
+		Xmltemplate.Location = "http://modeliosoft/xsddesigner/a22bd60b-ee3d-425c-8618-beb6a854051a/ITResource.xsd mspl.xsd"
 		//xsi:type
 		Xmltemplate.ITResource.Configuration.XsiType = "RuleSetConfiguration"
 		Xmltemplate.ITResource.Configuration.ConfigurationRule.ConfigurationRuleAction.XsiType = "DNSACTION"
@@ -94,11 +93,11 @@ func EnforceAction(request data.Northbound_request) bool {
 
 		XmlRequest, err := xml.MarshalIndent(&Xmltemplate, "", "	")
 		if err != nil {
-			log.Fatal("MarshalIndentError=%s", err)
+			log.Fatal("MarshalIndentError=", err)
 			return false
 		}
 
-		fmt.Printf("%s\n", XmlRequest)
+		fmt.Printf("REQUEST: %s\n", XmlRequest)
 
 		//Create Request
 		url := config.GetURL()
@@ -126,7 +125,7 @@ func EnforceAction(request data.Northbound_request) bool {
 		return true
 	} else {
 		//Handler parse error
-		log.Println("ActionType Not supported=%s", request.ActionDefinition.ActionType)
+		log.Printf("ActionType Not supported=%s \n", request.ActionDefinition.ActionType)
 		return false
 	}
 	

@@ -4,7 +4,7 @@ import (
     "encoding/xml"
 )
 
-// northbound struct
+///////////////////// NorthBound Struct /////////////////
 type Northbound_request struct {
 	ActionID         string           `json:"ActionID"`
 	Target           string           `json:"Target"`
@@ -27,49 +27,13 @@ type Northbound_response struct {
 }
 
 ///////////////////// southbound struct /////////////////
-/*
-	type rawXML struct {
-		Inner []byte `xml:",innerxml"`
-	}
-
-	type Southbound_request struct {
-		ITResourceOrchestration ITResourceOrchestration `xml:"ITResourceOrchestration"`
-	}
-
-	type ITResourceOrchestration struct {
-		ITResource	ITResource `xml:"ITResource"`
-	}
-
-	type ITResource struct {
-		XMLconfiguration xmlconfiguration `xml:"configuration"`
-	}
-
-	type xmlconfiguration struct {
-		capability	rawXML `xml:"capability"`
-		ConfigurationRule	ConfigurationRule `xml:"configurationRule"`
-	}
-
-	type ConfigurationRule struct {
-		configurationRuleAction		rawXML `xml:"configurationRuleAction"`
-		ConfigurationCondition	ConfigurationCondition `xml:"configurationCondition"`
-		externalData		rawXML `xml:"externalData"`
-	}
-
-	type ConfigurationCondition struct {
-		isCNF	rawXML `xml:"isCNF"`
-		DnsRateParameters	DnsRateParameters `xml:"dnsRateParameters"`
-	}
-
-	type DnsRateParameters struct {
-		operation	string `xml:"operation"`
-		IP	string `xml:"ip"`
-		Rate	int `xml:"rate"`
-	}
-*/
-
 type ITResourceOrchestration struct {
-    XMLName    xml.Name    `xml:"ITResourceOrchestration"`
-    ITResource ITResource  `xml:"ITResource"`
+    XMLName     xml.Name     `xml:"ITResourceOrchestration"`
+    Xmlns       string      `xml:"xmlns,attr"`
+    XsiXmlns    string      `xml:"xmlns:xsi,attr"`
+    Id          string      `xml:"id,attr"`
+    Location    string      `xml:"xsi:schemaLocation,attr"`
+    ITResource  ITResource   `xml:"ITResource"`
 }
 
 type ITResource struct {
@@ -126,23 +90,3 @@ type ExternalData struct {
     XsiType string   `xml:"xsi:type,attr"`
     Value   int      `xml:"value"`
 }
-
-
-
-/*
-type Southbound_request struct {
-	XMLName   xml.Name `xml:"ITResourceOrchestration"`
-    ITResource ITResource `xml:"ITResource"`
-}
-
-type ITResource struct {
-	configuration configurationXML `xml:"configuration"`
-}
-
-type configurationXML struct {
-	capability string `xml:"capability"`
-	configurationRule string `xml:"configurationRule"`
-	Name string `xml:"Name"`
-}
-
-*/

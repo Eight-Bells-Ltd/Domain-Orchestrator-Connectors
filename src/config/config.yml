@@ -1,1 +1,2 @@
-orchestrator: "http://localhost/example"
+orchestrator: "http://localhost:8080/meservice"
+northBoundPort: 8080

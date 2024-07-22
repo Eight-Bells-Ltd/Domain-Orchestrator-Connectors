@@ -46,5 +46,4 @@ Test interface manually:
     curl -X POST -d "templates/request.json" -H "Content-Type: application/json" <ContainerIP>:8080/EnforceAction
 
 Test interface with go test:
-    cd src/logic
-    go test
+    go test ./...

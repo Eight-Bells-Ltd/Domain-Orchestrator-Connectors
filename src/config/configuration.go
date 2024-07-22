@@ -39,3 +39,9 @@ func GetURL() string {
 	log.Printf("ENTER: GetURL(), %s", Config.Orchestrator)
 	return Config.Orchestrator
 }
+
+// GetNorthBoundPort provides port configured in config.yml
+func GetNorthBoundPort() int {
+	log.Printf("ENTER: GetNorthBoundPort(), %s", Config.NorthBoundPort)
+	return Config.NorthBoundPort
+}
