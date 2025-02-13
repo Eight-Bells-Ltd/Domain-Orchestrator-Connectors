@@ -15,6 +15,7 @@
 
 These connectors provide an abstraction between End-to-End Proactive Secure Connectivity Manager (ePEM) Horse component and the multidomain infrastructure, facilitating unified resource management, cross-domain trust and secure licensing, ultimately contributing to Horse project success and efficiency.
 
+
 ## REST API
 
 Through the Nortbound API receive actions to be executed on the infrastructure, as following.
