@@ -1,0 +1,9 @@
+{
+  "name": "dns_rate_limiting",
+  "intent_id": "30001",
+  "fields": {
+    "rate": "20",
+    "duration": "60",
+    "source_ip_filter": ["malicious_ips"]
+  }
+}

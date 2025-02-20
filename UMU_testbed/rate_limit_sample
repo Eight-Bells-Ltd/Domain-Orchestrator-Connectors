@@ -1,0 +1,15 @@
+<mspl>
+  <policy>
+    <name>dns_rate_limiting</name>
+    <intent_id>30001</intent_id>
+    <action>rate_limit</action>
+    <target>
+      <service>dns</service>
+      <source_ip_filter>malicious_ips</source_ip_filter>
+    </target>
+    <parameters>
+      <rate>20</rate>
+      <duration>60</duration>
+    </parameters>
+  </policy>
+</mspl>
