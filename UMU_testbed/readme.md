@@ -11,6 +11,7 @@ The orchestrator uses a **REST API** to apply orchestration policies (e.g., miti
 ### Example:
 ```bash
 curl -H "Cache-Control: no-cache" -H "Content-Type: application/xml" -X POST -d @policy.xml http://orchestrator-url:8002/meservice
+```
 
 ## 2. Interface Endpoint
 Both URIs and IPs can be used as endpoints for the interface.
