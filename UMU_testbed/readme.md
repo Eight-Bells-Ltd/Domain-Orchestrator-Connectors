@@ -39,3 +39,7 @@ Security Orchestrator Module: Selects the appropriate driver for applying the co
 Driver: Provides specific instructions to communicate with the device and apply the configuration. Since bind9 does not provide an API, the driver connects to the remote server via SSH, applies the configuration, and restarts the service with the new rate limit.
 
 
+![image](https://github.com/user-attachments/assets/879db727-8374-4fbf-ae4c-c22bbb7cfc1b)
+
+
+
