@@ -25,11 +25,3 @@ The interface uses **JWT (JSON Web Tokens)** for authentication.
 ## 4. Format of Mitigation Action
 
 The mitigation actions are enforced using **JSON** format.
-
-## 5. Demonstration (Optional)
-
-While optional, a demonstration is encouraged. UPC testbed owners are working on preparing videos to showcase how to send mitigation actions (e.g., rate limiting a specific IP) to their testbed and confirm that the actions are successfully enforced.
-
----
-
-*Note: Updates will be provided once the demonstration videos are available.*
