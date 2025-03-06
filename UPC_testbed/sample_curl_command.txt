@@ -1,0 +1,21 @@
+curl -X POST "http://10.19.2.1/dns_rate_limiting" \
+     -H "Content-Type: application/json" \
+     -d '{
+        "mitigation_actions": {
+            "action_name": "dns_rate_limiting_policy",
+            "policy_action": {
+                "action_type": "limit"
+            },
+            "policy_condition": {
+                "service_name": "dnsserver",
+                "source_ip": ["192.168.1.1", "192.168.1.2"],
+                "rate_limit": 20,
+                "priority": 1,
+                "duration": 60
+            },
+            "policy_information": {
+                "metadata": "rate limiting policy for dns queries",
+                "reason": "ddos attack detected"
+            }
+        }
+    }'
